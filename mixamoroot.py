@@ -331,6 +331,9 @@ def add_root_bone_nla(root_bone_name="Root", hip_bone_name="mixamorig:Hips", nam
     root_bone = armature.data.edit_bones.new(name_prefix + root_bone_name)
     root_bone.tail.z = .25
 
+    # When clicked add root in animation helper the root bone is too small with tail.y = 0
+    root_bone.tail.y = 30
+
     armature.data.edit_bones[hip_bone_name].parent = armature.data.edit_bones[name_prefix + root_bone_name]
     bpy.ops.object.mode_set(mode='OBJECT')
 
